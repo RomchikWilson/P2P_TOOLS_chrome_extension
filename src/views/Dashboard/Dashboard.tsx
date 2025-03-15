@@ -1,12 +1,14 @@
 import styles from "./Dashboard.module.css"
 import Header from "../components/Header/Header.tsx";
+import WorkerPanel from "./components/WorkerPanel/WorkerPanel.tsx";
 
 const Dashboard: React.FC = () => {
     return (
         <div className={styles.base}>
-            <Header text={"Profile"}/>
-            <h2>Панель инструментов</h2>
-            <p>Здесь будут твои инструменты!</p>
+            <Header
+                text={"Profile"}
+                showLogoutBtn={true} />
+            <WorkerPanel />
         </div>
     );
 };

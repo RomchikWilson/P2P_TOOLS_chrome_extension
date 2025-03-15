@@ -1,9 +1,41 @@
 .base {
     display: flex;
-    flex-direction: column;
-    width: 100vw;
-    height: 50px;
     align-items: center;
-    justify-content: center;
-    background: #1a1a1a;
+    justify-content: space-between; /* Распределяет заголовок и кнопку */
+    background: #1F1F1F;
+    padding: 12px 16px;
+    border-radius: 8px;
+    width: 100%; /* Фиксируем ширину */
+    box-sizing: border-box; /* Учитываем padding в ширине */
+    overflow: hidden; /* Предотвращает выход элементов за границы */
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+    flex: 1; /* Заголовок занимает всё доступное пространство */
+    text-align: center;
+    color: #E0E0E0;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    white-space: nowrap; /* Запрещает перенос текста */
+}
+
+.logout_btn {
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    flex-shrink: 0; /* Кнопка не уменьшается */
+}
+.logout_btn:hover {
+  background: #4c2424;
+}
+.logout_btn:active {
+  background: #ba2b2b;
+}
+
+.logoutIcon {
+    width: 20px;
+    height: 20px;
 }

@@ -61,7 +61,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                         ref={buttonRef}
                         onMouseEnter={handleMouseEnter}
                         onClick={handleLogin}
-                        className={styles.button}
+                        className={styles.login_btn}
                         style={{top: buttonPos.top, left: buttonPos.left}}
                         disabled={!username || !password}
                     >
