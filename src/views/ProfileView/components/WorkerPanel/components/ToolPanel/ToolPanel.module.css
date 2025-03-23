@@ -1,9 +1,9 @@
 .toolPanel {
     display: flex;
     align-items: center;
-    background: #232323;
+    background: #2c2c2c;
     padding: 5px;
-    margin: auto 15px;
+    margin-bottom: 15px;
     border-radius: 8px;
     gap: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);

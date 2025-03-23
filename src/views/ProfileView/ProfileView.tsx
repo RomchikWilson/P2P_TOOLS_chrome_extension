@@ -1,8 +1,8 @@
-import styles from "./Dashboard.module.css"
+import styles from "./ProfileView.module.css"
 import Header from "../components/Header/Header.tsx";
 import WorkerPanel from "./components/WorkerPanel/WorkerPanel.tsx";
 
-const Dashboard: React.FC = () => {
+const ProfileView: React.FC = () => {
     return (
         <div className={styles.base}>
             <Header
@@ -13,4 +13,4 @@ const Dashboard: React.FC = () => {
     );
 };
 
-export default Dashboard;
+export default ProfileView;

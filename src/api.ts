@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8000"; // Адрес твоего сервера
+const API_URL = "https://localhost:8000"; // Адрес твоего сервера
+
+axios.defaults.withCredentials = true;
 
 export const loginUser = async (username: string, password: string): Promise<boolean> => {
     try {

@@ -1,0 +1,37 @@
+.infoBlock {
+    display: flex;
+    gap: 20px;
+    background: #292929;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Левая часть (текстовые данные) */
+.details {
+    flex: 1;
+}
+
+.detailItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #444;
+}
+
+/* Правая часть (инпуты + кнопки) */
+.actions {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+}
+
+.inputField {
+    background: #3A3A3A;
+    padding: 8px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+}

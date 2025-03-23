@@ -1,4 +1,4 @@
-.base {
+.header {
     display: flex;
     align-items: center;
     justify-content: space-between; /* Распределяет заголовок и кнопку */
@@ -8,7 +8,7 @@
     width: 100%; /* Фиксируем ширину */
     box-sizing: border-box; /* Учитываем padding в ширине */
     overflow: hidden; /* Предотвращает выход элементов за границы */
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -29,9 +29,6 @@
     flex-shrink: 0; /* Кнопка не уменьшается */
 }
 .logout_btn:hover {
-  background: #4c2424;
-}
-.logout_btn:active {
   background: #ba2b2b;
 }
 

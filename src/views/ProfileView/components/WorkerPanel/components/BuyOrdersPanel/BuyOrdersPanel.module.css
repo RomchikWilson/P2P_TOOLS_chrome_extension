@@ -1,0 +1,76 @@
+.buyOrdersPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #292929;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #E0E0E0;
+}
+
+.panelHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #292929;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.addBtn,
+.showAllBtn {
+    background: #4a4a4a;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.addBtn {
+    background: #008c0c;
+}
+
+.showAllBtn {
+    padding: 6px 12px;
+}
+
+.addBtn:hover {
+    background: #00af0e;
+}
+
+.emptyCardsContainer {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #aaa;
+    padding: 20px 0;
+    margin-top: 8px;
+    background: #181818;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.cardsContainer {
+    display: flex;
+    padding: 5px;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.cardsContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.btnIcon {
+    width: 15px;
+    height: 15px;
+}

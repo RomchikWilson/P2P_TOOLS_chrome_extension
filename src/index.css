@@ -38,7 +38,7 @@ h1 {
 button {
   border-radius: 6px;
   border: none;
-  padding: 0.6em 1.2em;
+  padding: 6px;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -50,10 +50,11 @@ button {
   background-color: rgba(0, 0, 0, 0);
 }
 button:hover {
-  background: #3b274c;
+  background: #006093;
+  transform: scale(1.05);
 }
 button:active {
-  background: #BB86FC;
+  transform: scale(1);
 }
 button:focus,
 button:focus-visible {
