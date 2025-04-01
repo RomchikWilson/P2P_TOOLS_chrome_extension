@@ -1,37 +1,34 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import Login from "./views/Login/Login";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useAuth } from "./context/AuthContext";
 import ProfileView from "./views/ProfileView/ProfileView";
+import Login from "./views/Login/Login";
 import Loading from "./views/Loading/Loading";
-import {useNavigate} from "react-router-dom";
 
-const API_URL = "https://localhost:8000";
+const App = () => {
+  const { isAuthenticated, loading } = useAuth();
 
-const App: React.FC = () => {
-    const navigate = useNavigate();
-    const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  if (loading) return <Loading />;
 
-    useEffect(() => {
-        const checkAuth = async () => {
-            try {
-                const response = await axios.get(`${API_URL}/auth-status/`, {
-                    withCredentials: true,
-                });
-                setIsAuthenticated(response.data.authenticated);
-                if (!response.data.authenticated) navigate("/login");
-            } catch (error) {
-                console.error("Ошибка проверки токена:", error);
-                setIsAuthenticated(false);
-                navigate("/login");
-            }
-        };
-
-        checkAuth();
-    }, [navigate]);
-
-    if (isAuthenticated === null) return <Loading />;
-
-    return <div>{isAuthenticated ? <ProfileView /> : <Login onLoginSuccess={() => setIsAuthenticated(true)} />}</div>;
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          isAuthenticated ? <ProfileView /> : <Navigate to="/login" replace />
+        }
+      />
+      <Route
+        path="/login"
+        element={
+          isAuthenticated ? <Navigate to="/" replace /> : <Login />
+        }
+      />
+      <Route
+        path="*"
+        element={<div style={{ padding: 40 }}>404 – путь не найден</div>}
+      />
+    </Routes>
+  );
 };
 
 export default App;
