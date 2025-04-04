@@ -5,12 +5,12 @@ import CreateIcon from "../../../../../../../../assets/icons/create.png";
 
 interface BuyOrderCardProps {
     id: number;
-    cryptoExchange: ExchangeProps;
+    exchangeType: ExchangeProps;
     currentProgress: number;
     totalProgress: number;
 }
 
-const BuyOrderCard: React.FC<BuyOrderCardProps> = ({ id, cryptoExchange, currentProgress, totalProgress }) => {
+const BuyOrderCard: React.FC<BuyOrderCardProps> = ({ id, exchangeType, currentProgress, totalProgress }) => {
     const [isHovered, setIsHovered] = useState(false);
     const hoverTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -33,7 +33,7 @@ const BuyOrderCard: React.FC<BuyOrderCardProps> = ({ id, cryptoExchange, current
         <div className={styles.card} >
             <div
                 className={`${styles.imageOverlay} ${isHovered ? styles.visible : ""}`}
-                style={{ backgroundImage: `url(${cryptoExchange.icon})` }}
+                style={{ backgroundImage: `url(${exchangeType.icon})` }}
             />
             <div className={styles.overlay} />
             <div className={`${styles.content} ${isHovered ? styles.moveDown : ""}`}>

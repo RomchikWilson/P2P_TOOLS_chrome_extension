@@ -27,7 +27,6 @@ export const checkAuth = async (): Promise<boolean> => {
   
       return response.data.authenticated;
     } catch (error) {
-      console.error("Ошибка проверки токена:", error);
       return false;
     }
   };
@@ -40,4 +39,34 @@ try {
 } catch (error) {
     console.error("Ошибка при выходе:", error);
 }
+};
+
+export interface ActiveOrder {
+  id: number;
+  totalProgress: number;
+  currentProgress: number;
+  exchangeType: string;
+}
+
+export interface ProfileData {
+  userInfo: {
+    full_name: string;
+  };
+  lastMonthResult: {
+    income: number;
+    loss: number;
+  };
+  activeOrders: ActiveOrder[];
+}
+
+export const getProfileData = async (): Promise<ProfileData | null> => {
+  try {
+    const response = await axios.get(`${SERVER_URL}/profile/`, {
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Ошибка получения профиля:", error);
+    return null;
+  }
 };

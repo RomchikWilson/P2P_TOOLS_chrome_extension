@@ -1,7 +1,8 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./BuyOrdersPanel.module.css";
 import CreateIcon from "../../../../../../assets/icons/create.png";
 import BuyOrderCard from "./components/BuyOrderCard/BuyOrderCard.tsx";
+import { ActiveOrder, getProfileData } from "../../../../../../api.ts";
 import { CRYPTO_EXCHANGES } from "../../../../../../constants.ts";
 
 const BuyOrdersPanel: React.FC = () => {
@@ -14,13 +15,22 @@ const BuyOrdersPanel: React.FC = () => {
         }
     };
 
-    const exchanges = Object.values(CRYPTO_EXCHANGES);
-    const items = Array.from({ length: 5 }, (_, i) => ({
-        id: i + 1,
-        cryptoExchange: exchanges[Math.floor(Math.random() * exchanges.length)],
-        currentProgress: 456856.24,
-        totalProgress: 923203.89,
-    }));
+    const [userInfo, setUserInfo] = useState<{ full_name: string } | null>(null);
+    const [lastMonth, setLastMonth] = useState<{ income: number; loss: number } | null>(null);
+    const [activeOrders, setActiveOrders] = useState<ActiveOrder[]>([]);
+
+    useEffect(() => {
+        const fetchProfile = async () => {
+          const data = await getProfileData();
+          if (data) {
+            setUserInfo(data.userInfo);
+            setLastMonth(data.lastMonthResult);
+            setActiveOrders(data.activeOrders);
+          }
+        };
+    
+        fetchProfile();
+      }, []);
 
     return (
         <div className={styles.buyOrdersPanel}>
@@ -31,7 +41,7 @@ const BuyOrdersPanel: React.FC = () => {
                 <div className={styles.title}>Active orders</div>
                 <button className={styles.showAllBtn}>Show all</button>
             </div>
-            {items.length === 0 ? (
+            {activeOrders.length === 0 ? (
                 <div className={styles.emptyCardsContainer}>No orders</div>
             ) : (
                 <div
@@ -39,8 +49,13 @@ const BuyOrdersPanel: React.FC = () => {
                     ref={scrollContainerRef}
                     onWheel={handleScroll}
                 >
-                    {items.map((item) => (
-                        <BuyOrderCard key={item.id} {...item} />
+                    {activeOrders.map((order) => (
+                        <BuyOrderCard 
+                            id={order.id}
+                            exchangeType={CRYPTO_EXCHANGES[order.exchangeType]}
+                            currentProgress={order.currentProgress}
+                            totalProgress={order.totalProgress}
+                         />
                     ))}
                 </div>
             )}
