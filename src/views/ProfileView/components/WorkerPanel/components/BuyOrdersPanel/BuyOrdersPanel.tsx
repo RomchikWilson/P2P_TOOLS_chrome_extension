@@ -1,11 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import styles from "./BuyOrdersPanel.module.css";
 import CreateIcon from "../../../../../../assets/icons/create.png";
 import BuyOrderCard from "./components/BuyOrderCard/BuyOrderCard.tsx";
-import { ActiveOrder, getProfileData } from "../../../../../../api.ts";
-import { CRYPTO_EXCHANGES } from "../../../../../../constants.ts";
+import { ActiveOrderData } from "../../../../../../types/profileTypes.ts";
 
-const BuyOrdersPanel: React.FC = () => {
+interface Props {
+    activeOrders: ActiveOrderData[];
+}
+
+const BuyOrdersPanel: React.FC<Props> = ({ activeOrders }) => {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
     const handleScroll = (event: React.WheelEvent) => {
@@ -14,23 +17,6 @@ const BuyOrdersPanel: React.FC = () => {
             scrollContainerRef.current.scrollLeft -= event.deltaY * 3;
         }
     };
-
-    const [userInfo, setUserInfo] = useState<{ full_name: string } | null>(null);
-    const [lastMonth, setLastMonth] = useState<{ income: number; loss: number } | null>(null);
-    const [activeOrders, setActiveOrders] = useState<ActiveOrder[]>([]);
-
-    useEffect(() => {
-        const fetchProfile = async () => {
-          const data = await getProfileData();
-          if (data) {
-            setUserInfo(data.userInfo);
-            setLastMonth(data.lastMonthResult);
-            setActiveOrders(data.activeOrders);
-          }
-        };
-    
-        fetchProfile();
-      }, []);
 
     return (
         <div className={styles.buyOrdersPanel}>
@@ -50,12 +36,7 @@ const BuyOrdersPanel: React.FC = () => {
                     onWheel={handleScroll}
                 >
                     {activeOrders.map((order) => (
-                        <BuyOrderCard 
-                            id={order.id}
-                            exchangeType={CRYPTO_EXCHANGES[order.exchangeType]}
-                            currentProgress={order.currentProgress}
-                            totalProgress={order.totalProgress}
-                         />
+                        <BuyOrderCard {...order} />
                     ))}
                 </div>
             )}

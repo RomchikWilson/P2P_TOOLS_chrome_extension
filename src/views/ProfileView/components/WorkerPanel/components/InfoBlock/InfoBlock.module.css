@@ -2,30 +2,42 @@
     display: flex;
     gap: 20px;
     background: #292929;
-    padding: 12px;
+    padding: 15px;
     margin-bottom: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Левая часть (текстовые данные) */
-.details {
+.leftBlock {
     flex: 1;
+}
+
+.rightBlock {
+    flex: 1;
+    border-left: 1px solid #444;
+}
+
+.rightTitle,
+.title {
+    font-size: 13px;
+    margin-block: 0;
+}
+
+.rightTitle {
+    margin-bottom: 10px;
 }
 
 .detailItem {
     display: flex;
     justify-content: space-between;
-    padding: 5px 0;
-    border-bottom: 1px solid #444;
+    font-weight: bold;
+    padding: 2px 0;
 }
 
-/* Правая часть (инпуты + кнопки) */
-.actions {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    gap: 10px;
+.todayResults {
+    margin-top: 5px;
+    padding: 5px 0;
+    border-top: 1px solid #444;
 }
 
 .inputField {
@@ -34,4 +46,31 @@
     border-radius: 6px;
     text-align: center;
     font-weight: bold;
+}
+
+.label {
+    margin-right: 10px;
+}
+
+.valueDefault {
+    color: #ccc;
+}
+  
+.valueGreen {
+    color: #4caf50;
+}
+
+.valueRed {
+    color: #f44336;
+}
+
+.valueBlue {
+    color: #2196f3;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
 }

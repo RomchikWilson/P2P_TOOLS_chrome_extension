@@ -1,8 +1,6 @@
 import axios from "axios";
 
-export const SERVER_URL = import.meta.env.VITE_SERVER_URL
-
-axios.defaults.withCredentials = true;
+const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 export const loginUser = async (username: string, password: string): Promise<boolean> => {
     try {
@@ -39,34 +37,4 @@ try {
 } catch (error) {
     console.error("Ошибка при выходе:", error);
 }
-};
-
-export interface ActiveOrder {
-  id: number;
-  totalProgress: number;
-  currentProgress: number;
-  exchangeType: string;
-}
-
-export interface ProfileData {
-  userInfo: {
-    full_name: string;
-  };
-  lastMonthResult: {
-    income: number;
-    loss: number;
-  };
-  activeOrders: ActiveOrder[];
-}
-
-export const getProfileData = async (): Promise<ProfileData | null> => {
-  try {
-    const response = await axios.get(`${SERVER_URL}/profile/`, {
-      withCredentials: true,
-    });
-    return response.data;
-  } catch (error) {
-    console.error("Ошибка получения профиля:", error);
-    return null;
-  }
 };

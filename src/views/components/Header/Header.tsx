@@ -5,7 +5,7 @@ import LogoutIcon from "../../../assets/icons/logout.png";
 
 interface HeaderProps {
     text: string;
-    showLogoutBtn?: boolean;  // Делаем опциональным
+    showLogoutBtn?: boolean;
 }
 
 const Header: React.FC<HeaderProps> = ({ text, showLogoutBtn = false }) => {

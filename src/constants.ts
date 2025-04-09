@@ -6,7 +6,7 @@ export interface ExchangeProps {
   url: string;
 }
 
-export const CRYPTO_EXCHANGES: Record<string, ExchangeProps> = {
+export const CRYPTO_EXCHANGES = {
   okx: {
     icon: okxIcon,
     url: "https://www.okx.com"
@@ -15,7 +15,7 @@ export const CRYPTO_EXCHANGES: Record<string, ExchangeProps> = {
     icon: bybitIcon,
     url: "https://www.bybit.com"
   },
-};
+} as const;
 
 export enum FIAT_CURRENCY {
   uah = '₴'

@@ -1,31 +1,50 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styles from "./InfoBlock.module.css";
+import Chart from "./components/Chart/Chart";
+import { ResultsData, UserData } from "../../../../../../types/profileTypes";
 
-const InfoBlock: React.FC = () => {
-    const userData = {
-        name: "Иван Иванов",
-        email: "ivan@example.com",
-        balance: "15 000 ₽",
-    };
+interface Props {
+    userInfo: UserData;
+    results: ResultsData;
+}
 
-    const details = [
-        { label: "For today", value: "200 UDST" },
-        { label: "For current month", value: "1432 UDST" },
-    ];
+const InfoBlock: React.FC<Props> = ({ userInfo, results }) => {
+    const generalDetails = useMemo(() => [
+        { label: "Full name", value: userInfo.fullName },
+        { label: "Debt", value: userInfo.debt },
+        { label: "Interest rate", value: userInfo.interestRate },
+    ], [userInfo]);
+
+    const todayResults = useMemo(() => [
+        { label: "Income", value: results.currentDay.income, valueColor: styles.valueGreen },
+        { label: "Bonuses", value: results.currentDay.bonus, valueColor: styles.valueBlue },
+        { label: "Loss", value: results.currentDay.loss, valueColor: styles.valueRed },
+    ], [results]);
+
+    const renderDetailsBlock = (details: { label: string; value: string | number; valueColor?: string }[]) => (
+        details.map((item, index) => (
+            <div key={index} className={styles.detailItem}>
+                <span className={styles.label}>{item.label}:</span>
+                <span className={item.valueColor && item.value ? item.valueColor : styles.valueDefault}>
+                    {item.value}
+                </span>
+            </div>
+        ))
+    );
 
     return (
         <div className={styles.infoBlock}>
-            <div className={styles.details}>
-                {details.map((item, index) => (
-                    <div key={index} className={styles.detailItem}>
-                        <span>{item.label}:</span> <span>{item.value}</span>
-                    </div>
-                ))}
+            <div className={styles.leftBlock}>
+                <h2 className={styles.title}>General info</h2>
+                {renderDetailsBlock(generalDetails)}
+                <div className={styles.todayResults}>
+                    <h2 className={styles.title}>Today's Results</h2>
+                    {renderDetailsBlock(todayResults)}
+                </div>
             </div>
-            <div className={styles.actions}>
-                <div className={styles.inputField}>{userData.name}</div>
-                <div className={styles.inputField}>{userData.email}</div>
-                <div className={styles.inputField}>{userData.balance}</div>
+            <div className={styles.rightBlock}>
+                <h2 className={styles.rightTitle}>Monthly Breakdown</h2>
+                <Chart currentMonth={results.currentMonth} />
             </div>
         </div>
     );

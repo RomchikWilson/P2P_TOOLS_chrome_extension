@@ -1,16 +1,14 @@
 import React, { useState, useRef } from "react";
 import styles from "./BuyOrderCard.module.css";
-import {ExchangeProps, FIAT_CURRENCY} from "../../../../../../../../constants";
+import { CRYPTO_EXCHANGES, FIAT_CURRENCY } from "../../../../../../../../constants";
 import CreateIcon from "../../../../../../../../assets/icons/create.png";
+import { ActiveOrderData } from "../../../../../../../../types/profileTypes";
+import { roundToHundredths } from "../../../../../../../../utils";
 
-interface BuyOrderCardProps {
-    id: number;
-    exchangeType: ExchangeProps;
-    currentProgress: number;
-    totalProgress: number;
-}
+const BuyOrderCard: React.FC<ActiveOrderData> = ({ id, exchangeType, currentProgress, totalProgress }) => {
+    const exchange = CRYPTO_EXCHANGES[exchangeType];
+    const due = roundToHundredths(totalProgress - currentProgress);
 
-const BuyOrderCard: React.FC<BuyOrderCardProps> = ({ id, exchangeType, currentProgress, totalProgress }) => {
     const [isHovered, setIsHovered] = useState(false);
     const hoverTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -33,7 +31,7 @@ const BuyOrderCard: React.FC<BuyOrderCardProps> = ({ id, exchangeType, currentPr
         <div className={styles.card} >
             <div
                 className={`${styles.imageOverlay} ${isHovered ? styles.visible : ""}`}
-                style={{ backgroundImage: `url(${exchangeType.icon})` }}
+                style={{ backgroundImage: `url(${exchange.icon})` }}
             />
             <div className={styles.overlay} />
             <div className={`${styles.content} ${isHovered ? styles.moveDown : ""}`}>
@@ -48,12 +46,10 @@ const BuyOrderCard: React.FC<BuyOrderCardProps> = ({ id, exchangeType, currentPr
                 <div className={styles.infoBlock} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                     <div className={styles.parametersBlock}>
                         <div className={styles.parameterDue}>
-                            <div className={styles.parameterName}>Due:</div>
-                            <div className={styles.parameterValue}>{currentProgress}{FIAT_CURRENCY.uah}</div>
+                            Due: {due}{FIAT_CURRENCY.uah}
                         </div>
                         <div className={styles.parameterTotal}>
-                            <div className={styles.parameterName}>Total:</div>
-                            <div className={styles.parameterValue}>{totalProgress}{FIAT_CURRENCY.uah}</div>
+                            Total: {totalProgress}{FIAT_CURRENCY.uah}
                         </div>
                     </div>
                     <div className={styles.id}>ID: {id}</div>
