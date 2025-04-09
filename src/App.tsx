@@ -3,6 +3,7 @@ import { useAuth } from "./context/AuthContext";
 import ProfileView from "./views/ProfileView/ProfileView";
 import LoginView from "./views/LoginView/LoginView";
 import LoadingView from "./views/LoadingView/LoadingView";
+import OrderView from "./views/OrderView/OrderView";
 
 const App = () => {
   const { isAuthenticated, loading } = useAuth();
@@ -23,6 +24,8 @@ const App = () => {
           isAuthenticated ? <Navigate to="/" replace /> : <LoginView />
         }
       />
+      <Route path="/profile" element={<ProfileView />} />
+      <Route path="/new-order" element={<OrderView />} />
       <Route
         path="*"
         element={<div style={{ padding: 40 }}>404 – путь не найден</div>}

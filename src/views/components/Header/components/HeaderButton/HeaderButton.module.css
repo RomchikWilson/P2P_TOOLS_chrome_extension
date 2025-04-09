@@ -1,0 +1,14 @@
+.headerButton {
+    width: 32px;
+    height: 32px;
+    background: transparent;
+}
+
+.red:hover {
+  background: #ba2b2b;
+}
+
+.buttonIcon {
+    width: 20px;
+    height: 20px;
+}

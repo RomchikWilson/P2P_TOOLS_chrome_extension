@@ -1,38 +1,23 @@
 .header {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Распределяет заголовок и кнопку */
+    justify-content: space-between;
     background: #1F1F1F;
     padding: 12px 16px;
     border-radius: 8px;
-    width: 100%; /* Фиксируем ширину */
-    box-sizing: border-box; /* Учитываем padding в ширине */
-    overflow: hidden; /* Предотвращает выход элементов за границы */
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
     margin-bottom: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .title {
-    flex: 1; /* Заголовок занимает всё доступное пространство */
+    flex: 1;
     text-align: center;
     color: #E0E0E0;
     font-size: 18px;
     font-weight: bold;
     margin: 0;
-    white-space: nowrap; /* Запрещает перенос текста */
-}
-
-.logout_btn {
-    width: 32px;
-    height: 32px;
-    background: transparent;
-    flex-shrink: 0; /* Кнопка не уменьшается */
-}
-.logout_btn:hover {
-  background: #ba2b2b;
-}
-
-.logoutIcon {
-    width: 20px;
-    height: 20px;
+    white-space: nowrap;
 }
