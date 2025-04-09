@@ -1,13 +1,13 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 import ProfileView from "./views/ProfileView/ProfileView";
-import Login from "./views/Login/Login";
-import Loading from "./views/Loading/Loading";
+import LoginView from "./views/LoginView/LoginView";
+import LoadingView from "./views/LoadingView/LoadingView";
 
 const App = () => {
   const { isAuthenticated, loading } = useAuth();
 
-  if (loading) return <Loading />;
+  if (loading) return <LoadingView />;
 
   return (
     <Routes>
@@ -20,7 +20,7 @@ const App = () => {
       <Route
         path="/login"
         element={
-          isAuthenticated ? <Navigate to="/" replace /> : <Login />
+          isAuthenticated ? <Navigate to="/" replace /> : <LoginView />
         }
       />
       <Route

@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
-import styles from "./BuyOrderCard.module.css";
+import styles from "./OrderCard.module.css";
 import { CRYPTO_EXCHANGES, FIAT_CURRENCY } from "../../../../../../../../constants";
 import CreateIcon from "../../../../../../../../assets/icons/create.png";
 import { ActiveOrderData } from "../../../../../../../../types/profileTypes";
 import { roundToHundredths } from "../../../../../../../../utils";
 
-const BuyOrderCard: React.FC<ActiveOrderData> = ({ id, exchangeType, currentProgress, totalProgress }) => {
+const OrderCard: React.FC<ActiveOrderData> = ({ id, exchangeType, currentProgress, totalProgress }) => {
     const exchange = CRYPTO_EXCHANGES[exchangeType];
     const due = roundToHundredths(totalProgress - currentProgress);
 
@@ -59,4 +59,4 @@ const BuyOrderCard: React.FC<ActiveOrderData> = ({ id, exchangeType, currentProg
     );
 };
 
-export default BuyOrderCard;
+export default OrderCard;

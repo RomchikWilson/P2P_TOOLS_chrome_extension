@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
-import styles from "./BuyOrdersPanel.module.css";
+import styles from "./OrdersPanel.module.css";
 import CreateIcon from "../../../../../../assets/icons/create.png";
-import BuyOrderCard from "./components/BuyOrderCard/BuyOrderCard.tsx";
+import OrderCard from "./components/OrderCard/OrderCard.tsx";
 import { ActiveOrderData } from "../../../../../../types/profileTypes.ts";
 
 interface Props {
     activeOrders: ActiveOrderData[];
 }
 
-const BuyOrdersPanel: React.FC<Props> = ({ activeOrders }) => {
+const OrdersPanel: React.FC<Props> = ({ activeOrders }) => {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
     const handleScroll = (event: React.WheelEvent) => {
@@ -18,11 +18,15 @@ const BuyOrdersPanel: React.FC<Props> = ({ activeOrders }) => {
         }
     };
 
+    const handleCreateOrder = () => {
+        
+    };
+
     return (
         <div className={styles.buyOrdersPanel}>
             <div className={styles.panelHeader}>
                 <button className={styles.addBtn}>
-                    <img src={CreateIcon} alt={'Create new order'} className={styles.btnIcon} />
+                    <img src={CreateIcon} alt={'Create new order'} className={styles.btnIcon} onClick={handleCreateOrder}/>
                 </button>
                 <div className={styles.title}>Active orders</div>
                 <button className={styles.showAllBtn}>Show all</button>
@@ -36,7 +40,7 @@ const BuyOrdersPanel: React.FC<Props> = ({ activeOrders }) => {
                     onWheel={handleScroll}
                 >
                     {activeOrders.map((order) => (
-                        <BuyOrderCard {...order} />
+                        <OrderCard {...order} />
                     ))}
                 </div>
             )}
@@ -44,4 +48,4 @@ const BuyOrdersPanel: React.FC<Props> = ({ activeOrders }) => {
     );
 };
 
-export default BuyOrdersPanel;
+export default OrdersPanel;

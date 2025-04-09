@@ -1,7 +1,7 @@
 import styles from "./WorkerPanel.module.css"
 import ToolPanel from "./components/ToolPanel/ToolPanel.tsx";
 import InfoBlock from "./components/InfoBlock/InfoBlock.tsx";
-import BuyOrdersPanel from "./components/BuyOrdersPanel/BuyOrdersPanel.tsx";
+import OrdersPanel from "./components/OrdersPanel/OrdersPanel.tsx";
 import { ProfileData } from "../../../../types/profileTypes.ts";
 
 
@@ -14,7 +14,7 @@ const WorkerPanel: React.FC<Props> = ({ data }) => {
         <div className={styles.workerPanel}>
             <ToolPanel />
             <InfoBlock userInfo={data.userInfo} results={data.results}/>
-            <BuyOrdersPanel activeOrders={data.activeOrders}/>
+            <OrdersPanel activeOrders={data.activeOrders}/>
         </div>
     );
 };

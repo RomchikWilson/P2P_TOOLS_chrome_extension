@@ -1,9 +1,9 @@
 import { useAuth } from "../../context/AuthContext";
 import Header from "../components/Header/Header";
-import styles from "./Login.module.css";
+import styles from "./LoginView.module.css";
 import { useState } from "react";
 
-const Login = () => {
+const LoginView = () => {
     const { login } = useAuth();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -44,4 +44,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default LoginView;

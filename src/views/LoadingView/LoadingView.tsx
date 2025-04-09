@@ -1,6 +1,6 @@
-import styles from "./Loading.module.css"; // Импорт CSS-модуля
+import styles from "./LoadingView.module.css"; // Импорт CSS-модуля
 
-const Loading = () => {
+const LoadingView = () => {
     return (
         <div className={styles.loadingContainer}>
             <div className={styles.loadingSpinner}></div>
@@ -8,4 +8,4 @@ const Loading = () => {
     );
 };
 
-export default Loading;
+export default LoadingView;

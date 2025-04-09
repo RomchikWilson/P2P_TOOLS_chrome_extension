@@ -2,7 +2,7 @@ import styles from "./ProfileView.module.css"
 import Header from "../components/Header/Header.tsx";
 import WorkerPanel from "./components/WorkerPanel/WorkerPanel.tsx";
 import { useEffect, useState } from "react";
-import Loading from "../Loading/Loading.tsx";
+import Loading from "../LoadingView/LoadingView.tsx";
 import { ProfileData } from "../../types/profileTypes.ts";
 import { getProfileData } from "../../api/profileAPI.ts";
 
