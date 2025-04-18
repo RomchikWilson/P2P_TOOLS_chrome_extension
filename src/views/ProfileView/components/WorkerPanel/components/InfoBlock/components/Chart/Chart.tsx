@@ -14,6 +14,8 @@ const Chart: React.FC<Props> = ({ currentMonth }) => {
         { label: "Loss", value: currentMonth.loss },
     ], [currentMonth]);
 
+    const hasData = monthResults.reduce((sum, item) => sum + item.value, 0) > 0;
+
     const COLORS = ['#4caf50', '#2196f3', '#f44336'];
 
     const renderCustomLabel = ({ percent }: { percent: number }) => (
@@ -24,28 +26,29 @@ const Chart: React.FC<Props> = ({ currentMonth }) => {
         <ResponsiveContainer width="100%" height={157}>
             <PieChart>
                 <Pie
-                    data={monthResults}
+                    data={hasData ? monthResults : [{ label: "No data", value: 1 }]}
                     dataKey="value"
                     nameKey="label"
                     cx="50%"
                     cy="56%"
                     outerRadius={40}
                     labelLine={false}
-                    label={renderCustomLabel}
+                    label={hasData ? renderCustomLabel : () => ""}
                 >
-                    {monthResults.map((_, index) => (
+                    {(hasData ? monthResults : [{ value: 1 }]).map((_, index) => (
                         <Cell
                             key={`cell-${index}`}
-                            fill={COLORS[index % COLORS.length]}
+                            fill={hasData ? COLORS[index % COLORS.length] : '#555'}
                             stroke="none"
                         />
                     ))}
                 </Pie>
-                <Tooltip wrapperStyle={{ wordBreak: 'break-word', whiteSpace: 'normal' }} />
+                {hasData && (<Tooltip wrapperStyle={{ wordBreak: 'break-word', whiteSpace: 'normal' }} />)}
                 <Legend verticalAlign='bottom' wrapperStyle={{ whiteSpace: 'normal', wordBreak: 'break-word' }} />
             </PieChart>
         </ResponsiveContainer>
     );
 };
+
 
 export default Chart;

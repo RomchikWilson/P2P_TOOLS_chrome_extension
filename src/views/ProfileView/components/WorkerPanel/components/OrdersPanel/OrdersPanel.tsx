@@ -24,6 +24,10 @@ const OrdersPanel: React.FC<Props> = ({ activeOrders }) => {
         navigate('/new-order');
     };
 
+    const handleAllOrders = () => {
+        navigate('/orders');
+    };
+
     return (
         <div className={styles.buyOrdersPanel}>
             <div className={styles.panelHeader}>
@@ -31,7 +35,7 @@ const OrdersPanel: React.FC<Props> = ({ activeOrders }) => {
                     <img src={CreateIcon} alt={'Create new order'} className={styles.btnIcon}/>
                 </button>
                 <div className={styles.title}>Active orders</div>
-                <button className={styles.showAllBtn}>Show all</button>
+                <button className={styles.showAllBtn} onClick={handleAllOrders}>Show all</button>
             </div>
             {activeOrders.length === 0 ? (
                 <div className={styles.emptyCardsContainer}>No orders</div>

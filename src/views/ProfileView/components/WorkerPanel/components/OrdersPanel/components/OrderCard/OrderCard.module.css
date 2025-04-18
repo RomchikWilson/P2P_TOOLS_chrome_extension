@@ -119,6 +119,10 @@
 
 .parameterDue,
 .parameterTotal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
     margin: auto 10px;
     padding: 5px 0;
     border-radius: 6px;

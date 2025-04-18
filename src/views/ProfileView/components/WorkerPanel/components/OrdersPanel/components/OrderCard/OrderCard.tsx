@@ -46,10 +46,12 @@ const OrderCard: React.FC<ActiveOrderData> = ({ id, exchangeType, currentProgres
                 <div className={styles.infoBlock} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                     <div className={styles.parametersBlock}>
                         <div className={styles.parameterDue}>
-                            Due: {due}{FIAT_CURRENCY.uah}
+                            <span>Due:</span>
+                            <span>{due}{FIAT_CURRENCY.uah}</span>
                         </div>
                         <div className={styles.parameterTotal}>
-                            Total: {totalProgress}{FIAT_CURRENCY.uah}
+                            <span>Total:</span>
+                            <span>{totalProgress}{FIAT_CURRENCY.uah}</span>
                         </div>
                     </div>
                     <div className={styles.id}>ID: {id}</div>

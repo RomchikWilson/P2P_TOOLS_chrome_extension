@@ -13,6 +13,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 400px;
+  min-height: 250px;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -22,17 +30,23 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 400px;
-  min-height: 250px;
-}
-
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+input,
+select {
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #4f46e5;
 }
 
 button {
@@ -49,6 +63,10 @@ button {
   transition: background 0.2s ease-in-out, box-shadow 0.2s;
   background-color: rgba(0, 0, 0, 0);
 }
+button img {
+  height: 100%;
+  width: 100%;
+}
 button:hover {
   background: #006093;
   transform: scale(1.05);
@@ -56,21 +74,8 @@ button:hover {
 button:active {
   transform: scale(1);
 }
-button:focus,
-button:focus-visible {
-  outline: none;
-  box-shadow: none;
-}
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.error-border {
+  border: 1px solid red;
+  outline: none;
 }

@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({ text, showLogoutBtn = false, showBackBt
   const { logout } = useAuth();
 
   const backToProfile = () => {
-    navigate('/profile');
+    navigate('/');
     console.log('backToProfile - Complete')
   };
 

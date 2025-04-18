@@ -26,7 +26,6 @@
 .addBtn,
 .showAllBtn {
     background: #4a4a4a;
-    color: white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -34,12 +33,12 @@
     background: #008c0c;
 }
 
-.showAllBtn {
-    padding: 6px 12px;
-}
-
 .addBtn:hover {
     background: #00af0e;
+}
+
+.showAllBtn {
+    padding: 6px 12px;
 }
 
 .emptyCardsContainer {
