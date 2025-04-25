@@ -21,7 +21,7 @@ export interface ActiveOrderData {
   id: number;
   totalProgress: number;
   currentProgress: number;
-  exchangeType: keyof typeof CRYPTO_EXCHANGES;
+  exchange: keyof typeof CRYPTO_EXCHANGES;
 }
 
 export interface ProfileData {

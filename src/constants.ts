@@ -1,5 +1,5 @@
-import okxIcon from "../src/assets/icons/crypto-exchanges/okx.png";
-import bybitIcon from "../src/assets/icons/crypto-exchanges/bybit.png";
+import okxIcon from "./assets/icons/crypto-exchanges/okx.png";
+import bybitIcon from "./assets/icons/crypto-exchanges/bybit.png";
 
 export interface ExchangeProps {
   icon: string;
@@ -23,4 +23,14 @@ export enum ORDER_STATUSES {
   ACTIVE = 'Active',
   COMPLETED = 'Completed',
   CANCELED = 'Canceled',
+}
+
+export enum OPERATION_STATUSES {
+  COMPLETED = 'Completed',
+  CANCELED = 'Canceled',
+}
+
+export enum TRANSACTION_TYPES {
+  DEBIT = 'Debit',
+  CREDIT = 'Credit',
 }

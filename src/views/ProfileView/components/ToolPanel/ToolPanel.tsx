@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./ToolPanel.module.css";
 
-import CheckReceiptIcon from "../../../../../../assets/icons/worker-tools/check-receipt.png";
-import AnswerIcon from "../../../../../../assets/icons/worker-tools/answers.png";
+import CheckReceiptIcon from "../../../../assets/icons/worker-tools/check-receipt.png";
+import AnswerIcon from "../../../../assets/icons/worker-tools/answers.png";
 
 const tools = [
     { id: 1, icon: CheckReceiptIcon, title: "Check the receipt" },

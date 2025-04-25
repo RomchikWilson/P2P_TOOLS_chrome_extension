@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import styles from "./InfoBlock.module.css";
 import Chart from "./components/Chart/Chart";
-import { ResultsData, UserData } from "../../../../../../types/profileTypes";
+import { ResultsData, UserData } from "../../../../types/profileTypes";
 
 interface Props {
     userInfo: UserData;

@@ -1,10 +1,13 @@
-import styles from "./ProfileView.module.css"
-import Header from "../components/Header/Header.tsx";
-import WorkerPanel from "./components/WorkerPanel/WorkerPanel.tsx";
+import HeaderBlock from "../components/HeaderBlock/HeaderBlock.tsx";
 import { useEffect, useState } from "react";
 import Loading from "../LoadingView/LoadingView.tsx";
 import { ProfileData } from "../../types/profileTypes.ts";
 import { getProfileData } from "../../api/profileAPI.ts";
+import ContentBlock from "../components/ContentBlock/ContentBlock.tsx";
+import ViewWrapper from "../components/ViewWrapper/ViewWrapper.tsx";
+import InfoBlock from "./components/InfoBlock/InfoBlock.tsx";
+import ToolPanel from "./components/ToolPanel/ToolPanel.tsx";
+import OrdersPanel from "./components/OrdersPanel/OrdersPanel.tsx";
 
 const ProfileView: React.FC = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -25,10 +28,14 @@ const ProfileView: React.FC = () => {
     if (isLoading || !data) return <Loading />;
 
     return (
-        <div className={styles.base}>
-            <Header text={"Profile"} showLogoutBtn={true} />
-            <WorkerPanel data={data}/>
-        </div>
+        <ViewWrapper>
+            <HeaderBlock text={"Profile"} showLogoutBtn={true} />
+            <ContentBlock>
+                <ToolPanel />
+                <InfoBlock userInfo={data.userInfo} results={data.results}/>
+                <OrdersPanel activeOrders={data.activeOrders}/>
+            </ContentBlock>
+        </ViewWrapper>
     );
 };
 

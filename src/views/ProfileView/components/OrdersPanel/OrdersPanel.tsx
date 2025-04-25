@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import styles from "./OrdersPanel.module.css";
-import CreateIcon from "../../../../../../assets/icons/create.png";
+import CreateIcon from "../../../../assets/icons/create.png";
 import OrderCard from "./components/OrderCard/OrderCard.tsx";
-import { ActiveOrderData } from "../../../../../../types/profileTypes.ts";
+import { ActiveOrderData } from "../../../../types/profileTypes.ts";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
@@ -21,7 +21,7 @@ const OrdersPanel: React.FC<Props> = ({ activeOrders }) => {
     };
     
     const handleCreateOrder = () => {
-        navigate('/new-order');
+        navigate('/orders/new');
     };
 
     const handleAllOrders = () => {
@@ -29,7 +29,7 @@ const OrdersPanel: React.FC<Props> = ({ activeOrders }) => {
     };
 
     return (
-        <div className={styles.buyOrdersPanel}>
+        <div className={styles.ordersPanel}>
             <div className={styles.panelHeader}>
                 <button className={styles.addBtn} onClick={handleCreateOrder}>
                     <img src={CreateIcon} alt={'Create new order'} className={styles.btnIcon}/>

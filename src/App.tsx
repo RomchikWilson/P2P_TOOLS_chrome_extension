@@ -25,8 +25,9 @@ const App = () => {
           isAuthenticated ? <Navigate to="/" replace /> : <LoginView />
         }
       />
-      <Route path="/new-order" element={<OrderView />} />
       <Route path="/orders" element={<OrderListView />} />
+      <Route path="/orders/:id" element={<OrderView />} />
+      <Route path="/orders/new" element={<OrderView />} />
       <Route
         path="*"
         element={<div style={{ padding: 40 }}>404 – путь не найден</div>}

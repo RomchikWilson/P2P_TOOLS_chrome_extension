@@ -1,4 +1,4 @@
-import styles from "./HeaderButton.module.css";
+import styles from "./Button.module.css";
 import { MouseEventHandler } from "react";
 
 
@@ -14,7 +14,7 @@ const HeaderButton: React.FC<HeaderProps> = ({ showBtn, title, imgSrc, onClick, 
   if (showBtn) {
     return (
       <button 
-        className={`${styles.headerButton} ${color ? styles[color] : ''}`} 
+        className={`${styles.button} ${color ? styles[color] : ''}`} 
         title={title} 
         onClick={onClick}
       >

@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
-import Header from "../components/Header/Header";
+import Header from "../components/HeaderBlock/HeaderBlock";
 import styles from "./OrderListView.module.css";
 import { fetchOrders } from "../../api/ordersAPI";
 import OrderFiltersBlock from "./components/FiltersBlock/OrderFiltersBlock";
-import Table from "../components/Table/Table";
-import { OrderFilters } from "../../types/ordersTypes";
+import Table, { ColumnConfig } from "../components/Table/Table";
+import { ListOrderFilters, ListOrderData } from "../../types/ordersTypes";
+import { useNavigate } from "react-router-dom";
+import ViewWrapper from "../components/ViewWrapper/ViewWrapper";
+import ContentBlock from "../components/ContentBlock/ContentBlock";
 
 const OrderListView = () => {
-    const [filters, setFilters] = useState<OrderFilters>({
+    const navigate = useNavigate();
+    
+    const [filters, setFilters] = useState<ListOrderFilters>({
         status: "",
         dateFrom: undefined,
         dateTo: undefined,
@@ -28,7 +33,7 @@ const OrderListView = () => {
         loadOrders();
     }, [page]);
 
-    const orderColumns = [
+    const orderColumns: ColumnConfig<ListOrderData>[] = [
         { key: "id", label: "ID" },
         { key: "status", label: "Status" },
         { key: "exchange", label: "Exchange" },
@@ -37,22 +42,28 @@ const OrderListView = () => {
         { key: "coinAmount", label: "Coins" },
     ];
 
+    const handleRowClick = (order: ListOrderData) => {
+        navigate(`/orders/${order.id}`)
+    };
+
     return (
-        <div className={styles.orderView}>
-            <Header text="Orders" showBackBtn={true}/>
-            <OrderFiltersBlock
-                filters={filters}
-                setFilters={setFilters}
-                onClear={clearFilters}
-                onApply={loadOrders}
-            />
-            <Table data={orders} columns={orderColumns} />
+        <ViewWrapper>
+            <Header text="Orders"/>
+            <ContentBlock disableScroll>
+                <OrderFiltersBlock
+                    filters={filters}
+                    setFilters={setFilters}
+                    onClear={clearFilters}
+                    onApply={loadOrders}
+                />
+                <Table data={orders} columns={orderColumns} onRowClick={handleRowClick} />
+            </ContentBlock>
             <div className={styles.footer}>
                 <button onClick={() => setPage((p) => p - 1)} disabled={page <= 1}>Prev</button>
                 {page}
                 <button onClick={() => setPage((p) => p + 1)} disabled={orders.length < 10}>Next</button>
             </div>
-        </div>
+        </ViewWrapper>
     );
 };
 

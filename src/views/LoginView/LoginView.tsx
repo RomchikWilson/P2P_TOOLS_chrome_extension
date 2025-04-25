@@ -1,5 +1,6 @@
 import { useAuth } from "../../context/AuthContext";
-import Header from "../components/Header/Header";
+import Header from "../components/HeaderBlock/HeaderBlock";
+import ViewWrapper from "../components/ViewWrapper/ViewWrapper";
 import styles from "./LoginView.module.css";
 import { useState } from "react";
 
@@ -14,8 +15,8 @@ const LoginView = () => {
     };
 
     return (
-        <div className={styles.base}>
-            <Header text="Sign Up" />
+        <ViewWrapper>
+            <Header text="Sign Up" disableBackBtn/>
             <div className={styles.main_container}>
                 <div className={styles.input_container}>
                     <input
@@ -40,7 +41,7 @@ const LoginView = () => {
                     </button>
                 </div>
             </div>
-        </div>
+        </ViewWrapper>
     );
 };
 

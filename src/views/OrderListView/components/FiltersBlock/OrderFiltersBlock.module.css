@@ -2,7 +2,6 @@
     display: flex;
     gap: 1rem;
     padding: 10px;
-    margin: 15px 15px 0 15px;
     background: #2c2c2c;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -13,13 +12,7 @@
     flex-direction: column;
 }
 .filterGroup label {
-    font-size: 0.7rem;
     margin-bottom: 0.25rem;
-}
-.filterGroup input,
-.filterGroup select {
-    padding: 0.3rem;
-    font-size: 0.7rem;
 }
   
 .filterControl {

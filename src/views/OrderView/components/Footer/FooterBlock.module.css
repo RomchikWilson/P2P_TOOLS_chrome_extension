@@ -1,0 +1,35 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    background: #1F1F1F;
+    border-radius: 8px;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.createBtn,
+.saveBtn {
+    width: 40vw;
+    height: 60%;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.createBtn {
+    background: #008c0c;
+}
+.createBtn:hover {
+    background: #00af0e;
+}
+
+.saveBtn {
+    background: #005b8c;
+}
+.saveBtn:hover {
+    background: #006b8c;
+}

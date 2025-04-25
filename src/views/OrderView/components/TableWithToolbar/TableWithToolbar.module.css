@@ -1,0 +1,30 @@
+.tableSection {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.tableControlPanel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+    background: #2c2c2c;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tableTitle {
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: white;
+}
+
+.tableActions button {
+    padding: 6px;
+}
+.tableActions img {
+    width: 14px;
+    height: 14px;
+}

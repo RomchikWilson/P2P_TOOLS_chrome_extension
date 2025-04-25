@@ -2,11 +2,11 @@ import styles from "./OrderFiltersBlock.module.css";
 import ReloadIcon from "../../../../assets/icons/reload.png";
 import CustomSelect from "../../../components/CustomSelect/CustomSelect";
 import { ORDER_STATUSES } from "../../../../constants";
-import { OrderFilters } from "../../../../types/ordersTypes";
+import { ListOrderFilters } from "../../../../types/ordersTypes";
 
 type OrderFiltersProps = {
-    filters: OrderFilters;
-    setFilters: (filters: OrderFilters) => void;
+    filters: ListOrderFilters;
+    setFilters: (filters: ListOrderFilters) => void;
     onClear: () => void;
     onApply: () => void;
 };

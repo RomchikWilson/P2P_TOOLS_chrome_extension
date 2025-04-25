@@ -1,8 +1,8 @@
 .tableWrapper {
-    flex: 1;
+    min-height: 150px;
     display: flex;
     flex-direction: column;
-    margin: 15px;
+    flex: 1;
     background: #2c2c2c;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -14,16 +14,19 @@
     border-collapse: collapse;
     font-size: 0.85rem;
 }
-.tableWrapper thead th {
+.tableWrapper thead {
     position: sticky;
     background: #2c2c2c;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     top: 0;
     z-index: 2;
+}
+.tableWrapper thead th {
     padding: 12px 10px;
 }
 .tableWrapper td {
     text-align: center;
-    padding: 12px 10px;
+    padding: 10px 10px;
 }
 .tableWrapper tbody tr:nth-child(even) {
     background-color: #222;

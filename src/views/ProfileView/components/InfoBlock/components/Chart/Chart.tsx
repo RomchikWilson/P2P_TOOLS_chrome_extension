@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { PieChart, Pie, Cell, Legend, Tooltip, ResponsiveContainer } from 'recharts';
-import { ResultData } from "../../../../../../../../types/profileTypes";
+import { ResultData } from "../../../../../../types/profileTypes";
 
 
 interface Props {
