@@ -4,18 +4,22 @@ import CreateIcon from "../../../../assets/icons/create.png";
 
 interface Props<T> {
   title: string;
+  initialData?: T[];
   data: T[];
   columns: ColumnConfig<T>[];
   tableMaxHeight?: number;
   onAdd?: () => void;
+  onCellEdit?: (rowId: number, key: keyof T, value: T[keyof T]) => void;
 }
 
-const TableWithToolbar = <T extends { id: string | number }>({
+const TableWithToolbar = <T extends { id: number }>({
   title,
+  initialData = [],
   data,
   columns,
   tableMaxHeight,
   onAdd,
+  onCellEdit,
 }: Props<T>) => {
     return (
         <div className={styles.tableSection}>
@@ -27,7 +31,11 @@ const TableWithToolbar = <T extends { id: string | number }>({
                     </button>
                 </div>
             </div>
-            <Table data={data} columns={columns} maxHeight={tableMaxHeight}/>
+            <Table 
+                initialData={initialData} data={data} 
+                columns={columns} 
+                maxHeight={tableMaxHeight} 
+                onCellEdit={onCellEdit} />
         </div>
     );
 };

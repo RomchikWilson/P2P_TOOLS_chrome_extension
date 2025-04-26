@@ -7,9 +7,10 @@ import { createOrder } from "../../../../api/ordersAPI";
 interface Props {
     orderData: OrderData;
     isNew: boolean;
+    isDataChanged?: boolean;
 }
 
-const FooterBlock: React.FC<Props> = ({ orderData, isNew }) => {
+const FooterBlock: React.FC<Props> = ({ orderData, isNew, isDataChanged = false }) => {
     const navigate = useNavigate();
   
     const handleCreate = async () => {
@@ -48,7 +49,7 @@ const FooterBlock: React.FC<Props> = ({ orderData, isNew }) => {
                 Create
             </button>
             ) : (
-            <button className={styles.saveBtn} onClick={handleSave}>
+            <button className={styles.saveBtn} onClick={handleSave} disabled={!isDataChanged}>
                 Save
             </button>
             )}

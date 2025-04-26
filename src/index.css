@@ -88,6 +88,12 @@ button:active {
 }
 
 .error-border {
+  color: red;
   border: 1px solid red;
+  outline: none;
+}
+.changed-border {
+  color: rgb(255, 153, 0);
+  border: 1px solid rgb(255, 153, 0);
   outline: none;
 }

@@ -4,6 +4,7 @@
     flex-direction: column;
     flex: 1;
     background: #2c2c2c;
+    border: 1px solid #2c2c2c;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     overflow-y: auto;
@@ -26,7 +27,7 @@
 }
 .tableWrapper td {
     text-align: center;
-    padding: 10px 10px;
+    padding: 10px 0;
 }
 .tableWrapper tbody tr:nth-child(even) {
     background-color: #222;
@@ -37,4 +38,13 @@
 .tableWrapper tbody tr:hover {
     background-color: #444;
     transition: background-color 0.2s ease-in-out;
+}
+.tableWrapper input,
+.tableWrapper select {
+    width: 100%;
+    max-width: 100px;
+    padding: 0;
+    background: none;
+    border: none;
+    text-align: center;
 }

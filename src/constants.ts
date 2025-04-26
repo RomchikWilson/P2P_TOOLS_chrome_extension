@@ -7,16 +7,16 @@ export interface ExchangeProps {
 }
 
 export const CRYPTO_EXCHANGES = {
-  okx: { icon: okxIcon, url: "https://www.okx.com"},
-  bybit: { icon: bybitIcon, url: "https://www.bybit.com"},
+  OKX: { icon: okxIcon, url: "https://www.okx.com"},
+  BYBIT: { icon: bybitIcon, url: "https://www.bybit.com"},
 } as const;
 
 export enum FIAT_CURRENCY {
-  uah = '₴'
+  UAH = '₴'
 }
 
 export enum COIN_CURRENCY {
-  usdt = 'USDT'
+  USDT = 'USDT'
 }
 
 export enum ORDER_STATUSES {

@@ -4,12 +4,10 @@ const SERVER_URL = import.meta.env.VITE_SERVER_URL
 
 export const loginUser = async (username: string, password: string): Promise<boolean> => {
     try {
-        const response = await axios.post(`${SERVER_URL}/login/`,
+        await axios.post(`${SERVER_URL}/login/`,
             { username, password },
             { withCredentials: true }
         );
-
-        console.log(response.data.message);
         return true;
     } catch {
         return false;
