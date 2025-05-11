@@ -1,12 +1,3 @@
-.content {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    gap: 20px;
-    overflow-y: auto;
-    padding: 0 0 20px 0;
-}
-
 .mainContainer {
     display: flex;
     flex-direction: column;
@@ -31,3 +22,38 @@
     margin-bottom: 0.25rem;
 }
   
+.statusBtns {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100vw;
+}
+
+.nextStatus {
+    height: 25px; 
+    aspect-ratio: 1 / 1;
+    background: #4a4a4a;
+}
+
+.createBtn,
+.saveBtn {
+    width: 40vw;
+    height: 60%;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.createBtn {
+    background: #008c0c;
+}
+.createBtn:hover {
+    background: #00af0e;
+}
+
+.saveBtn {
+    background: #005b8c;
+}
+.saveBtn:hover {
+    background: #006b8c;
+}

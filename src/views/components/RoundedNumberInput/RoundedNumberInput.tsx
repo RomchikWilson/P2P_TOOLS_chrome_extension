@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
+
 interface Props {
-  initialValue?: number | null;
+  initialValue?: number | undefined;
   value: number;
   decimalPlaces: number;
   required?: boolean;
@@ -7,47 +9,52 @@ interface Props {
 }
 
 const RoundedNumberInput: React.FC<Props> = ({
-  initialValue = null,
+  initialValue = undefined,
   value,
   decimalPlaces,
   required = false,
   onChange,
 }) => {
-  const showError = required && (String(value).trim() === "" || parseFloat(String(value)) === 0);
+  const [localValue, setLocalValue] = useState<string>("");
+
+  useEffect(() => {
+    setLocalValue(value.toString());
+  }, [value]);
+
+  const showError = required && (localValue.trim() === "" || parseFloat(localValue) === 0);
   const isChanged = typeof initialValue === "number" && value !== initialValue;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let input = e.target.value.replace(",", ".");
-    const regex = new RegExp(`^(?:\\d+)?(?:\\.\\d{0,${decimalPlaces}})?$`);
-
+    const input = e.target.value.replace(",", ".");
+    const regex = new RegExp(`^\\d*(\\.\\d{0,${decimalPlaces}})?$`);
     if (input === "" || regex.test(input)) {
-      const parsed = parseFloat(input);
-      onChange(input === "" || isNaN(parsed) ? 0 : parsed);
+      setLocalValue(input);
     }
   };
 
   const handleBlur = () => {
-    if (value || isNaN(Number(value))) return;
-
-    const parsed = parseFloat(String(value));
-    const factor = Math.pow(10, decimalPlaces);
-    const rounded = Math.floor(parsed * factor) / factor;
-    const final = rounded.toFixed(decimalPlaces);
-    onChange(parseFloat(final));
+    const parsed = parseFloat(localValue);
+    if (!isNaN(parsed)) {
+      const factor = Math.pow(10, decimalPlaces);
+      const rounded = Math.floor(parsed * factor) / factor;
+      onChange(parseFloat(rounded.toFixed(decimalPlaces)));
+    } else {
+      onChange(0);
+    }
   };
 
   return (
     <input
       type="text"
       inputMode="decimal"
-      value={String(value)}
+      value={localValue}
       onChange={handleChange}
       onBlur={handleBlur}
       placeholder={"0." + "0".repeat(decimalPlaces)}
-      className={showError ? "error-border" : isChanged ? "changed-border" : ""}
+      onWheel={(e) => e.preventDefault()}
+      className={showError ? "value-error" : isChanged ? "value-changed" : ""}
     />
   );
 };
-
 
 export default RoundedNumberInput;

@@ -5,6 +5,8 @@ import LoginView from "./views/LoginView/LoginView";
 import LoadingView from "./views/LoadingView/LoadingView";
 import OrderView from "./views/OrderView/OrderView";
 import OrderListView from "./views/OrderListView/OrderListView";
+import NewExecutionView from "./views/NewExecutionView/NewExecutionView";
+import NewAdjustmentView from "./views/NewAdjustmentView/NewAdjustmentView";
 
 const App = () => {
   const { isAuthenticated, loading } = useAuth();
@@ -28,6 +30,8 @@ const App = () => {
       <Route path="/orders" element={<OrderListView />} />
       <Route path="/orders/:id" element={<OrderView />} />
       <Route path="/orders/new" element={<OrderView />} />
+      <Route path="/orders/:id/new-execution" element={<NewExecutionView />} />
+      <Route path="/orders/:id/new-adjustment" element={<NewAdjustmentView />} />
       <Route
         path="*"
         element={<div style={{ padding: 40 }}>404 – путь не найден</div>}

@@ -5,7 +5,7 @@ export interface Option {
 
 interface Props {
   options: Option[];
-  initialValue?: string | null;
+  initialValue?: string | undefined;
   value: string;
   needEmptyOption?: boolean;
   emptyOptionLabel?: string;
@@ -16,7 +16,7 @@ interface Props {
 
 const CustomSelect: React.FC<Props> = ({
   options,
-  initialValue = null,
+  initialValue = undefined,
   value,
   needEmptyOption = false,
   emptyOptionLabel = "...",
@@ -24,6 +24,7 @@ const CustomSelect: React.FC<Props> = ({
   required = false,
   onChange,
 }) => {
+  console.log('-=>', value);
   const showError = required && value.trim() === "";
   const isChanged = typeof initialValue === "string" && value !== initialValue;
 
@@ -36,7 +37,7 @@ const CustomSelect: React.FC<Props> = ({
     <select 
       value={value}
       onChange={handleChange}
-      className={showError ? "error-border" : isChanged ? "changed-border" : ""}
+      className={showError ? "value-error" : isChanged ? "value-changed" : ""}
     >
       { needEmptyOption &&
         <option

@@ -17,8 +17,8 @@ const LoginView = () => {
     return (
         <ViewWrapper>
             <Header text="Sign Up" disableBackBtn/>
-            <div className={styles.main_container}>
-                <div className={styles.input_container}>
+            <div className={styles.contentBlock}>
+                <div className={styles.inputContainer}>
                     <input
                         type="text"
                         placeholder="Username"
@@ -36,9 +36,7 @@ const LoginView = () => {
                     <button 
                         className={styles.login_btn} 
                         onClick={handleLogin} disabled={!username || !password}
-                    >
-                        Login
-                    </button>
+                    >Login</button>
                 </div>
             </div>
         </ViewWrapper>

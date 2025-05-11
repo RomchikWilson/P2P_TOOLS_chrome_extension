@@ -112,25 +112,29 @@
     gap: 5px;
     font-weight: bold;
     font-size: 14px;
+    user-select: none;
 }
 
-.parameterDue,
-.parameterTotal {
+.parameter {
+    margin: auto 10px;
+    border-radius: 6px;
+    background: #292929;
+    padding: 5px 0;
+}
+
+.due,
+.total {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    margin: auto 10px;
-    padding: 5px 0;
-    border-radius: 6px;
-    background: #292929;
 }
 
-.parameterTotal {
+.total {
     color: #00ff00;
 }
 
-.parameterDue {
+.due {
     color: #ffaa00;
 }
 

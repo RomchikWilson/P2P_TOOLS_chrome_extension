@@ -1,4 +1,4 @@
-import { CRYPTO_EXCHANGES } from "../constants";
+import { Exchange, OrderStatus } from "../enums";
 
 export interface UserData {
   fullName: string;
@@ -19,13 +19,14 @@ export interface ResultsData {
 
 export interface ActiveOrderData {
   id: number;
+  status: OrderStatus;
   totalProgress: number;
   currentProgress: number;
-  exchange: keyof typeof CRYPTO_EXCHANGES;
+  exchange: keyof typeof Exchange;
 }
 
 export interface ProfileData {
   userInfo: UserData;
   results: ResultsData;
-  activeOrders: ActiveOrderData[];
+  orders: ActiveOrderData[];
 }

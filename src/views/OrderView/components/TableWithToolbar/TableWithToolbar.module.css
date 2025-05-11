@@ -28,3 +28,10 @@
     width: 14px;
     height: 14px;
 }
+
+.addBtn {
+    background: #008c0c;
+}
+.addBtn:hover {
+    background: #00af0e;
+}

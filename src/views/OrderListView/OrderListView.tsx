@@ -8,6 +8,7 @@ import { ListOrderFilters, ListOrderData } from "../../types/ordersTypes";
 import { useNavigate } from "react-router-dom";
 import ViewWrapper from "../components/ViewWrapper/ViewWrapper";
 import ContentBlock from "../components/ContentBlock/ContentBlock";
+import { OrderStatus } from "../../enums";
 
 const OrderListView = () => {
     const navigate = useNavigate();
@@ -35,7 +36,11 @@ const OrderListView = () => {
 
     const orderColumns: ColumnConfig<ListOrderData>[] = [
         { key: "id", label: "ID" },
-        { key: "status", label: "Status" },
+        { 
+            key: "status", 
+            label: "Status",
+            render: (value) => OrderStatus[value as keyof typeof OrderStatus] || value
+        },
         { key: "exchange", label: "Exchange" },
         { key: "fiatAmount", label: "Fiat" },
         { key: "price", label: "Price" },

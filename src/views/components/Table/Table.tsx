@@ -6,6 +6,7 @@ import TextInput from "../TextInput/TextInput";
 export type ColumnConfig<T> = {
     key: keyof T;
     label: string;
+    render?: (value: T[keyof T], row: T) => React.ReactNode;
     type?: "number" | "text";
     decimalPlaces?: number;
     options?: Option[];
@@ -74,12 +75,12 @@ function Table<T extends { id: number }>({
                                                             required
                                                             onChange={(val) => onCellEdit?.(row.id, col.key, val as T[keyof T])} />
                                                     ) : (
-                                                        String(row[col.key])
+                                                        col.render ? col.render(row[col.key], row) : String(row[col.key])
                                                     )
                                                 )
                                             )
                                         ) : (
-                                            String(row[col.key])
+                                            col.render ? col.render(row[col.key], row) : String(row[col.key])
                                         )}
                                     </td>
                                 ))}

@@ -7,6 +7,7 @@ interface Props<T> {
   initialData?: T[];
   data: T[];
   columns: ColumnConfig<T>[];
+  disableControlPanel?: boolean;
   tableMaxHeight?: number;
   onAdd?: () => void;
   onCellEdit?: (rowId: number, key: keyof T, value: T[keyof T]) => void;
@@ -17,6 +18,7 @@ const TableWithToolbar = <T extends { id: number }>({
   initialData = [],
   data,
   columns,
+  disableControlPanel = false,
   tableMaxHeight,
   onAdd,
   onCellEdit,
@@ -26,7 +28,7 @@ const TableWithToolbar = <T extends { id: number }>({
             <div className={styles.tableControlPanel}>
                 <div className={styles.tableTitle}>{title}</div>
                 <div className={styles.tableActions}>
-                    <button onClick={onAdd} title="Add">
+                    <button className={styles.addBtn} onClick={onAdd} title="Add" disabled={disableControlPanel}>
                         <img src={CreateIcon} alt="Add" />
                     </button>
                 </div>

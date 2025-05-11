@@ -12,7 +12,7 @@ const TextInput: React.FC<Props> = ({
   onChange,
 }) => {
   const showError = required && value.trim() === "";
-  const isChanged = typeof initialValue === "number" && value !== initialValue;
+  const isChanged = initialValue && value !== initialValue;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
@@ -24,7 +24,7 @@ const TextInput: React.FC<Props> = ({
       inputMode="text"
       value={value}
       onChange={handleInputChange}
-      className={showError ? "error-border" : isChanged ? "changed-border" : ""}
+      className={showError ? "value-error" : isChanged ? "value-changed" : ""}
     />
   );
 };

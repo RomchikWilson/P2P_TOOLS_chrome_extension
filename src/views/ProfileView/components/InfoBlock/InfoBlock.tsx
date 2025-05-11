@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import styles from "./InfoBlock.module.css";
 import Chart from "./components/Chart/Chart";
 import { ResultsData, UserData } from "../../../../types/profileTypes";
+import Panel from "../../../components/Panel/Panel";
 
 interface Props {
     userInfo: UserData;
@@ -33,20 +34,22 @@ const InfoBlock: React.FC<Props> = ({ userInfo, results }) => {
     );
 
     return (
-        <div className={styles.infoBlock}>
-            <div className={styles.leftBlock}>
-                <h2 className={styles.title}>General info</h2>
-                {renderDetailsBlock(generalDetails)}
-                <div className={styles.todayResults}>
-                    <h2 className={styles.title}>Today's Results</h2>
-                    {renderDetailsBlock(todayResults)}
+        <Panel>
+            <div className={styles.infoBlock}>
+                <div className={styles.leftBlock}>
+                    <h2 className={styles.title}>General info</h2>
+                    {renderDetailsBlock(generalDetails)}
+                    <div className={styles.todayResults}>
+                        <h2 className={styles.title}>Today's Results</h2>
+                        {renderDetailsBlock(todayResults)}
+                    </div>
+                </div>
+                <div className={styles.rightBlock}>
+                    <h2 className={styles.rightTitle}>Monthly Breakdown</h2>
+                    <Chart currentMonth={results.currentMonth} />
                 </div>
             </div>
-            <div className={styles.rightBlock}>
-                <h2 className={styles.rightTitle}>Monthly Breakdown</h2>
-                <Chart currentMonth={results.currentMonth} />
-            </div>
-        </div>
+        </Panel>
     );
 };
 

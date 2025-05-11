@@ -1,4 +1,4 @@
-import styles from "./LoadingView.module.css"; // Импорт CSS-модуля
+import styles from "./LoadingView.module.css";
 
 const LoadingView = () => {
     return (
